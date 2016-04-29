@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex-三行两列自适应布局</title>
+	<style type="text/css">
+		body,html{
+			/*充高度充满整个浏览器*/
+			width: 100%;
+			height: 100%
+		}
+		body{
+			/*设置为弹性容器，垂直排列*/
+			display: flex;
+			flex-direction: column;
+		}
+		.head,.foot{
+			height: 100px;
+			background-color: blue;
+		}
+		.body{
+			/*垂直方向上（主轴）除头，脚外，剩余空间我全占了*/
+			flex: 1 1 0;
+			display: flex;
+			width: 900px;
+			align-self: center;/*弹性子元素居中对齐*/
+			/*margin:auto;*/
+		}
+		.side{
+			width: 200px;
+			margin-right: 10px;
+			background-color: red;
+		}
+		.main{
+			flex-grow: 1;
+			background-color: grey;
+		}
+	</style>
+</head>
+<body>
+	<div class="head"></div>
+	<div class="body">
+		<div class="side"></div>
+		<div class="main"></div>
+	</div>
+	<div class="foot"></div>
+</body>
+</html>
