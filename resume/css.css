@@ -12,8 +12,15 @@ h1{
 	bottom: 1em;
 	color:#0ca2ba; 
 }
-h2{font-size: 1.5em;}
-h3{font-size: 1.25em;}
+h2{
+	font-size: 1.5em;
+	
+}
+h3{
+	font-size: 1.25em;
+	color: #0ca2ba;
+	margin-bottom: 1em;
+}
 .resume{
 	width: 75em;
 	min-height: 132em;
@@ -77,6 +84,8 @@ button{
 	border-radius: 17.5em;
 	margin-top: 4em;
 	display: inline-block;
+	border:4px solid #fff;
+	padding: 3px;
 }
 #about_me ul{
 	display: inline-block;
@@ -87,4 +96,32 @@ button{
 #about_me li{
 	display: block;
 	line-height: 2em;
+}
+.main,
+aside{
+	display: inline-block;
+}
+.main{
+	width: 27.8em;
+	margin-right: 4.4em;
+}
+.main h2{
+	margin-top: 1em;
+}
+section li{
+	display: block;
+}
+li div{
+	display: none;
+	/*color: rgb(100,100,100);*/
+}
+
+span{
+	font-weight: bold;
+	/*margin: 1em 0;*/
+}
+.time{
+	float: right;
+	background-color: #c5c9c9;
+	padding: 0.5em;
 }
