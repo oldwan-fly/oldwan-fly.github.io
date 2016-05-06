@@ -10,7 +10,7 @@ h1{
 	font-size: 1.75em;
 	position: absolute;
 	bottom: 1em;
-	color:#0ca2ba; 
+	color:#d33c42; 
 }
 h2{
 	font-size: 1.5em;
@@ -18,7 +18,6 @@ h2{
 }
 h3{
 	font-size: 1.25em;
-	color: #0ca2ba;
 	margin-bottom: 1em;
 }
 .resume{
@@ -44,25 +43,28 @@ section{
 	position: relative;
 }
 #about_me{
-	background-color: #0ca2ba;
+	background-color: #d33c42;
 	color: #fff;
 }
 #work_education{
 	background-color: #d7dbdb;
 }
 #self_introduction{
-	background-color: #16a286;
+	background-color: #449adb;
 	color: #fff;
 }
-nav{
+nav,
+footer ul{
 	position: absolute;
 	right: 12.5em;
 	bottom: 1.4em;
 }
-nav li{
+nav li,
+footer ul li{
 	display: inline-block;
 }
-nav li a{
+nav li a,
+footer ul li a{
 	text-decoration: none;
 	color: #fff;
 	font-size: 1.25em;
@@ -72,7 +74,7 @@ button{
 	border: none;
 	font-size: 1.4em;
 	font-family: "微软雅黑";
-	color:#0ca2ba; 
+	color:#d33c42; 
 	background-color: rgba(0,0,0,0);
 	margin-left: 1em;
 }
@@ -84,8 +86,6 @@ button{
 	border-radius: 17.5em;
 	margin-top: 4em;
 	display: inline-block;
-	border:4px solid #fff;
-	padding: 3px;
 }
 #about_me ul{
 	display: inline-block;
@@ -108,20 +108,49 @@ aside{
 .main h2{
 	margin-top: 1em;
 }
+#work_education h3{
+	color: #d33c42;
+}
 section li{
 	display: block;
 }
 li div{
 	display: none;
-	/*color: rgb(100,100,100);*/
 }
 
 span{
 	font-weight: bold;
-	/*margin: 1em 0;*/
 }
 .time{
 	float: right;
 	background-color: #c5c9c9;
 	padding: 0.5em;
 }
+
+
+.ability{
+	display: inline-block;
+	width: 27.8em;
+	margin-right: 4.4em;
+	margin-top: 1em;
+}
+.ability h3{
+	color: #000;
+}
+.introduction{
+	display: inline-block;
+}
+
+
+footer h2{
+	position: absolute;
+	bottom: 1em;
+	color: #d33c42;
+}
+footer ul li a{
+	color: #d33c42;
+}
+.to_top{
+	color: #fff; 
+}
+
