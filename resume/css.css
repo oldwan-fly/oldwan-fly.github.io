@@ -34,6 +34,7 @@ footer{
 }
 section{
 	padding: 4em 12.5em;
+	position: relative;
 }
 #about_me{
 	background-color: #0ca2ba;
@@ -75,5 +76,15 @@ button{
 	height:17.5em;
 	border-radius: 17.5em;
 	margin-top: 4em;
-
+	display: inline-block;
+}
+#about_me ul{
+	display: inline-block;
+	position: absolute;
+	right: 20em;
+	bottom: 7em;
+}
+#about_me li{
+	display: block;
+	line-height: 2em;
 }
