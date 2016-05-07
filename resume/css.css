@@ -101,6 +101,10 @@ button{
 aside{
 	display: inline-block;
 }
+aside img{
+	width: 14em;
+	top: 0;
+}
 .main{
 	width: 27.8em;
 	margin-right: 4.4em;
@@ -154,3 +158,5 @@ footer ul li a{
 	color: #fff; 
 }
 
+/*@media 左右内边距减小+饼状图和爱好图改为display：block，变成文字+main部分拉宽*/
+/*@print 打印的时候   饼状图和爱好图改为display：block，变成文字+main部分拉宽+section部分的背景颜色改为灰色和白色*/
