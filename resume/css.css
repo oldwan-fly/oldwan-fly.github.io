@@ -70,14 +70,14 @@ footer ul li a{
 	font-size: 1.25em;
 	margin-left: 1em;
 }
-button{
+/*button{
 	border: none;
 	font-size: 1.4em;
 	font-family: "微软雅黑";
 	color:#d33c42; 
 	background-color: rgba(0,0,0,0);
 	margin-left: 1em;
-}
+}*/
 
 
 #about_me img{
@@ -159,8 +159,58 @@ footer ul li a{
 .to_top{
 	color: #fff; 
 }
-
-
+.hidn{
+	display: none;
+}
+.block{
+	display: block;
+}
+p{
+	white-space: pre-wrap;
+}
 /*@media 左右内边距减小+饼状图和爱好图改为display：block，变成文字+main部分拉宽*/
 /*@print 打印的时候   饼状图和爱好图改为display：block，变成文字+main部分拉宽+section部分的背景颜色改为灰色和白色*/
 /*大段的文字两段端对齐*/
+@media print{
+	*{
+		background-color: #fff;
+		color: #000;
+	}
+	header,
+	section{
+		border-bottom: 1px solid #000;
+		padding: 1em 5em;
+	}
+	header,
+	footer,
+	aside,
+	input,
+	.introduction{
+		display: none;
+	}
+	#about_me ul{
+		bottom: 2em;
+	}
+	.main,
+	.ability{
+		margin-right: 0;
+		width: 100%;
+	}
+	#about_me img{
+		width: 12em;
+		height:12em;
+		border-radius: 12em;
+		margin-top: 1em;
+	}
+	h3{
+		text-decoration: underline;
+		margin: 0.3em 0;
+	}
+	.hidn{
+		display: block;
+	}
+	.block{
+		display: none;
+	}
+
+}
