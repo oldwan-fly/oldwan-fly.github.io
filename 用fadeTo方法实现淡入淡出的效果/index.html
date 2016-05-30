@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>使用fadeTo()方法设置淡入淡出效果的不透明度</title>
+        <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    
+    <body>
+        <h3>使用fadeTo()方法设置淡入淡出效果的不透明度</h3>
+        <span class="red"></span><span class="orange"></span><span class="blue"></span>
+        
+        <script type="text/javascript">
+            $(function () {
+                $("span").each(function (index) {
+                    switch (index) {
+                        case 0:
+                            $(".red").fadeTo(3000,0.3,function(){
+                                $(this).html("妥了");
+                            })
+                            break;
+                        case 1:
+                            $(".orange").fadeTo(5000,0.5,function(){
+                                $(this).html("也妥了");
+                            })
+                            break;
+                        case 2:
+                            $(".blue").fadeTo(7000,0.7,function(){
+                                $(this).html("全妥了");
+                            })
+                            break;
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -6,20 +6,7 @@
 	padding: 0px;
 	box-sizing: border-box;
 }
-h1{
-	font-size: 1.75em;
-	position: absolute;
-	bottom: 1em;
-	color:#d33c42; 
-}
-h2{
-	font-size: 1.5em;
-	
-}
-h3{
-	font-size: 1.25em;
-	margin-bottom: 1em;
-}
+
 .resume{
 	width: 75em;
 	min-height: 132em;
@@ -53,6 +40,20 @@ section{
 	background-color: #449adb;
 	color: #fff;
 }
+h1{
+	font-size: 1.75em;
+	position: absolute;
+	bottom: 1em;
+	color:#d33c42; 
+}
+h2{
+	font-size: 1.5em;
+	
+}
+h3{
+	font-size: 1.25em;
+	margin-bottom: 1em;
+}	
 nav,
 footer ul{
 	position: absolute;
@@ -70,15 +71,6 @@ footer ul li a{
 	font-size: 1.25em;
 	margin-left: 1em;
 }
-/*button{
-	border: none;
-	font-size: 1.4em;
-	font-family: "微软雅黑";
-	color:#d33c42; 
-	background-color: rgba(0,0,0,0);
-	margin-left: 1em;
-}*/
-
 
 #about_me img{
 	width: 17.5em;
@@ -103,7 +95,6 @@ aside{
 }
 aside img{
 	width: 14em;
-	/*top: 0;*/
 }
 .main{
 	width: 27.8em;
@@ -159,18 +150,29 @@ footer ul li a{
 .to_top{
 	color: #fff; 
 }
+/*打印时需要隐藏或者显示的*/
 .hidn{
 	display: none;
 }
 .block{
 	display: block;
 }
+/*大段的文字两段端对齐*/
 p{
 	white-space: pre-wrap;
 }
-/*@media 左右内边距减小+饼状图和爱好图改为display：block，变成文字+main部分拉宽*/
+/*h1{
+	font-size: 1.75em !important;
+}
+h2{
+	font-size: 1.5em !important;
+}
+h3{
+	font-size: 1.25em !important;
+}*/
+
 /*@print 打印的时候   饼状图和爱好图改为display：block，变成文字+main部分拉宽+section部分的背景颜色改为灰色和白色*/
-/*大段的文字两段端对齐*/
+
 @media print{
 	*{
 		background-color: #fff;
@@ -215,6 +217,7 @@ p{
 
 }
 
+/*@media screen 左右内边距减小+饼状图和爱好图另起一行，main部分拉宽*/
 @media only screen and(max-width: 63.9em){
 	header,
 	footer,

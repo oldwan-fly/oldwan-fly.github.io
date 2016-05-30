@@ -1,4 +1,4 @@
-
+// 显示和隐藏工作经历
 function showtext(){
 	var more1=document.getElementById("more1");
 	var more2=document.getElementById("more2");
