@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网易教育</title>
+	<style type="text/css">
+		/*reset*/
+		*{margin: 0px;padding: 0px;box-sizing: border-box;font: 14px "微软雅黑";}
+		li{list-style-type: none;}
+		a{text-decoration: none;}
+		.top-text,.header{position: absolute;width: 1206px; margin: 0 auto;left: 50%;transform: translateX(-50%);}
+		.clearfix:after{content: ".";display: block;clear: both;height: 0;overflow: hidden;visibility: hidden;}
+		.hide{display: none;} 
+
+		/*top*/
+		.top{width: 100%;height:36px;background-color: #f3f3f3;font-size: 12px;}
+		.top-text{height: 36px;line-height: 36px;}
+		.top-text p{display: inline-block;}
+		.close-top{float: right;line-height: 36px;}
+
+		/*header*/
+		.section-header{position: relative;width: 100%;height: 90px;}
+		.header{height: 90px;}
+		.logo{float: left;line-height: 90px;}
+		nav{float: right;}
+		nav li{display: inline-block;margin-left: 10px;line-height: 90px;}
+		nav a{font-size: 16px;}
+
+		/*banner*/
+		#container { width: 1616px; height: 460px; overflow: hidden; position: relative;left: 50%;transform: translateX(-50%);}
+		#list { width: 8080px; height: 460px; position: absolute; z-index: 1;}
+		#list img { float: left;width: 1616px;}
+		#buttons { position: absolute; height: 15px; width: 100px; z-index: 2; bottom: 20px; left: 50%;transform: translateX(-50%);}
+		#buttons span {float: left; width: 15px; height: 15px; border-radius: 50%;background-color: #fff; margin-right: 15px;}
+		#buttons .on {  background: grey;}
+		.arrow {display: none; line-height: 39px; text-align: center; font-size: 36px; font-weight: bold; width: 40px; height: 40px;  position:absolute; z-index: 2; top: 50%;transform: translateY(-50%); background-color: rgba(0,0,0,0.3); color: #fff;}
+		.arrow:hover { background-color: rgba(0,0,0,0.7);}
+		#container:hover .arrow { display: block;}
+		#prev { left: 20px;}
+		#next { right: 20px;}
+
+		/*courseInfo*/
+		.courseInfo ul{width: 1206px; display: flex;margin:0 auto;left:-80px;}
+		.courseInfo li{margin: 60px 0 60px 80px;}
+		ul .active{margin-left:0px;}
+		.courseInfo img{float: left;margin-right: 25px;margin-top: 15px;}
+		.courseInfo h2,.courseInfo p,.courseInfo a{margin: 0 0 25px 105px;}
+		.courseInfo h2{font-size: 21px;font-weight: bold}
+		.courseInfo p{font-size: 14px;}
+
+
+		/*picShow*/
+		.picShow{width: 100%;height:220px;position: relative;margin-bottom: 80px;}
+		.picShow div{position: absolute;left: 50%;transform: translateX(-50%); width: 1650px;margin:0 auto;}
+		.picShow img{margin-right: 3px;}
+
+
+		/*课程内容区*/
+		.content{width: 1206px;margin: 60px auto;}
+		.content-list{display: block;width: 400px;height: 50px;box-shadow: 0 1px 1px #999;margin-bottom: 30px;}
+
+		.coursebox{float: left;width: 980px;}
+
+		.content-list a{width: 200px;height: 50px;text-align: center;font-size: 20px;line-height: 50px;float: left;}
+		.content-list a.active{background: #21a557;color: #fff;}
+		.content-side{width: 100%; height: 1280px;position: relative;}
+		.course{position: relative; width: 225px; height: 228px; background-color: #fff; padding: 0 5px;box-sizing: border-box; margin:  0 20px 20px 0;float: left;}
+		.course img{width: 215px; height: 124px;margin-bottom: 10px;}
+		.course span{margin-bottom: 10px; display: block;}
+		.course .name{display: block;width: 210px;height: 14px; line-height: 12px; white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; }
+		.course .provider{color: #999;}
+		.course .learnerCount,.listlearner{width: auto; height: 16px; border: 1px solid #ddd;border-radius: 2px;line-height: 16px; color: #999;font-size: 8px;display: inline-block;padding-left: 15px;background: url(icon.png) no-repeat 2px -95px;}
+		.course .price{color: #fc0000;font-weight: bold;}
+
+		.page{float: right; width: 326px;height: 20px;line-height: 20px;text-align: center;cursor: pointer;}
+		.page ul li{display: block; float: left;width:20px;height: 20px;margin-right: 10px;cursor: pointer;text-align: center;}
+		.page ul li:hover{background: #9dd8b1;color: #fff;}
+		.page ul li.active{background: #9dd8b1;color: #fff;}
+		.page .pagebutton{float: left; width: 30px;height: 20px;margin-right: 10px; background: #9dd8b1;color: #fff;}
+
+		.hot-list{float: right;width: 220px;height: auto;overflow: hidden;}
+		.hot-list .video{height: 229px;width: 100%;background: #fff;margin-bottom: 20px;}
+		.hot-list .video img{width: 180px;height: 110px;padding-left: 20px;}
+		.hot-list span.title{display: block; height: 55px; width: 100%;border-bottom: 1px solid #ddd;font-size: 16px;line-height: 55px;margin-bottom: 20px;padding-left: 20px;}
+		.hot-list .video p{margin-bottom: 10px;padding-left: 20px;}
+
+		.hot-list .list{width: 100%;height: 776px;;background: #fff;}
+		.hot-list .list .hotlistwarp{width: 200px;height: 50px;margin: 0 0 20px 20px;;}
+		.hot-list .list .hotlistwarp img{display: block;float: left; width: 50px; height: 50px;margin-right: 12px;}
+		.hot-list .list .hotlistwarp .listname{display: block; width: 122px;height: 16px;font-size: 14px;white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden;margin-bottom: 12px;padding: 0;}
+		.hot-list .list .hotlistwarp .listlearner img{width: 16px;height: 16px;vertical-align: text-top;}
+
+
+		/*footer*/
+		.section-footer{width: 100%;height: 263px;background-color: #2c3339;}
+		.footer{width: 1206px;height:263px;margin: 0 auto;}
+		.footer li{display: inline-block;margin: 91px 50px;color: #999;line-height: 1.5;}
+		.footer a{color: #999;line-height: 1.5;}
+		.footer-more{margin-top:80px;}
+		.footer .active{display: inline-block;width: 65px;height: 20px;background: url(icon.png) no-repeat 45px -115px;}
+
+
+		/*课程预览图*/
+		.lgCourse{position: absolute;width: 470px;height: 235px;top: -10px;left: -5px;padding:10px; display: none;}
+	</style>
+</head>
+<body>
+	<!-- 顶部提示栏 -->
+	<div class="top">
+		<div class="top-text">
+			<p>网易云课堂微专业，帮助你掌握技能，令你求职或加薪多一份独特优势！<a href="#">立即查看</a></p>
+			<a href="#" class="close-top">X 不再提醒</a>
+		</div>	
+	</div>
+
+	<!-- logo和导航区 -->
+	<section class="section-header">
+		<div class="header">
+			<div class="logo">
+				<img src="logo1.png" class="网易教育产品部">
+			</div>
+			<nav class="nav">
+				<ul>
+					<li><a href="#">网易公开课</a></li>
+					<li><a href="#">云课堂</a></li>
+					<li><a href="#">中国大学MOOC</a></li>
+					<li class="search"><a href=""><img src=""></a></li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+	<!-- banner -->
+	<div id="container">
+	    <div id="list" style="left: -1616px;">
+	    	<img src="banner3.jpg">
+			<img src="banner1.jpg">
+			<img src="banner2.jpg">
+			<img src="banner3.jpg">
+			<img src="banner1.jpg">
+	    </div>
+	    <div id="buttons">
+	        <span index="1" class="on"></span>
+	        <span index="2"></span>
+	        <span index="3"></span>
+	    </div>
+	    <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+	    <a href="javascript:;" id="next" class="arrow">&gt;</a>
+	</div>
+
+	<!-- 课程说明 -->
+	<div class="courseInfo">
+		<ul>
+			<li class="active">
+				<img src="product_logo1.png" class="info-img1">
+					<h2>网易公开课</h2>
+					<P>推出国内外名校公开课，涉及广泛的学科，名校老师认真讲解深度剖析，网易视频公开课频道搭建起强有力的网络视频教学平台</P>
+					<a href="#">了解更多 &gt;</a>
+			</li>
+			<li>
+				<img src="product_logo1.png" class="info-img1">
+					<h2>云课堂</h2>
+					<P>网易旗下大型在线学习平台，该平台向学习者提供海量免费，优质课程，创新的个性化学习体验，自由开放的交流互动环境</P>
+					<a href="#">了解更多 &gt;</a>
+			</li>
+			<li>
+				<img src="product_logo1.png" class="info-img1">
+					<h2>中国大学MOOC</h2>
+					<P>是爱课程网携手云课堂打造的在线学习平台，每一个有提升愿望的人，都可以在这里学习中国最好的大学课程，学完还能获得证书认证</P>
+					<a href="#">了解更多 &gt;</a>
+			</li>
+		</ul>
+	</div>
+	
+	<!-- 图片展示 -->
+	<div class="picShow">
+		<div>
+			<img src="pic01.jpg">
+			<img src="pic02.jpg">
+			<img src="pic03.jpg">
+			<img src="pic04.jpg">
+			<img src="pic05.jpg">
+		</div>
+	</div>
+
+	<!-- 课程展示区 主侧两栏-->
+	<div class="content clearfix">
+		<!-- 主栏，包含切换卡片，课程图，页码 -->
+		<div class="coursebox">
+			<div class="content-list" id="courseclass">
+				<a class="active">产品设计</a><a>编程语言</a>
+			</div>
+
+			<div class="content-side" id="courselist"></div>
+
+			<div class="page" id="pagelist">
+				<ul>
+					<span id="pre" class="pagebutton"></span>
+						<li class="active">1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+						<li>7</li>
+						<li>8</li>
+					<span id="next" class="pagebutton">></span>
+				</ul>
+			</div>
+		</div>
+		<!-- 侧栏 包含视频和热门课程展示 -->
+		<div class="hot-list">
+			<div class="video">
+				<span class="title">机构介绍</span>
+				<p>观看下面的视频来了解吧：</p>
+				<img src="images/video.jpg" alt="">
+			</div>
+			<div class="list" id="hotlist">
+				<span class="title">最热排行</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- 页脚 -->
+	<div class="section-footer">
+		<footer class="footer">
+			<ul>
+				<li class="footer-logo">
+						<img src="logo2.png">
+						<p>&copy;2014 icourse164.org 浙ICP备08114786号-1</p>
+						<p>icourse.cn 京ICP备12020869号-2 京公网安备110102000459-2</p>
+				</li>
+				<li class="footer-more">
+						<p><a href="">友情链接：</a></p>
+						<p><a href="">网易公开课</a></p>
+						<p><a href="">网易云课堂</a></p>
+						<p><a href="">中国大学MOOC</a></p>
+				</li>
+				<li class="footer-more">
+						<p><a href="">我们:</a></p>
+						<p><a href="">关于</a></p>
+						<p><a href="">联系</a></p>
+						<p><a href="" class="active">关注</a></p>
+				</li>
+				<li class="footer-more">
+						<p><a href="">更多：</a></p>
+						<p><a href="">常见问题</a></p>
+						<p><a href="">意见反馈</a></p>
+				</li>
+			</ul>
+		</footer>
+	</div>
+
+	<!-- 登陆框 -->
+	<!-- 视频播放框 -->
+
+	<script type="text/javascript">
+		//获取元素$
+		function $(id){
+			return document.getElementById(id);
+		}
+
+		//  banner
+		window.onload=function(){
+			var container=document.getElementById("container");
+			var list=document.getElementById("list");
+			var buttons=document.getElementById("buttons").getElementsByTagName("span");
+			var prev=document.getElementById('prev');
+			var next=document.getElementById("next");
+			var index=1;//定义当前的点击
+			var timer;//定时器
+
+			// 定义函数点亮小圆点
+			function showButton(){
+				for (var i = 0; i < buttons.length; i++) {
+					if (buttons[i].className=="on") {
+						buttons[i].className="";
+							;
+					}
+				}
+				buttons[index-1].className="on";
+			}
+
+			// 轮播的关键：控制图片左右移动位置配合css中的hidden来实现轮播
+			function animate(offset){
+				var newLeft=parseInt(list.style.left)+offset;
+				list.style.left=newLeft+"px";
+				if (newLeft>-1616) {
+					list.style.left=-4848+"px";
+				}
+				if (newLeft<-4848) {
+					list.style.left=-1616+"px";
+				};
+			}
+
+			// 定时执行点击事件实现自动轮播
+			function play(){
+				timer=setInterval(function(){
+					next.onclick();
+				},3000);
+			}
+			function stop(){
+				clearInterval(timer);
+			}
+
+			// 向右箭头点击事件，实现点亮圆点，切换图片
+			next.onclick=function(){
+				if (index==3) {
+					index=1;
+				}else{
+					index+=1;
+				}
+				
+				showButton();
+				animate(-1616);
+			}
+			prev.onclick=function(){
+				if (index==1) {
+					index=3;
+				}else{
+					index-=1;
+				}
+				showButton();
+				animate(1616);
+			}
+
+			// 通过小圆点控制轮播
+			for (var i = 0; i < buttons.length; i++) {
+				if (this.className=="on") {
+					return;// 当点击的圆点正好当前点亮的圆点的时候，后面代码不执行
+				}
+				
+				buttons[i].onclick=function(){
+					var myIndex=parseInt(this.getAttribute("index"));
+					var offset=-1616*(myIndex-index);
+					index=myIndex;
+					animate(offset);
+					showButton();
+				};
+			}
+
+			container.onmouseover=stop;
+			container.onmouseout=play;
+
+			play();
+		}
+
+
+		/**
+		 * Ajax函数
+		 * type get por post
+		 * url 请求地址
+		 * data 数据
+		 * success 请求成功执行函数
+		 * faild 请求失败执行函数
+		 */
+		function Ajax(type, url, data, success, failed) {
+			//1.实体化xhr
+			var xhr  = new XMLHttpRequest();
+			
+			var type = type.toUpperCase();
+			var random = Math.random();
+			//遍历data用&链接
+			if (typeof data == 'object') {
+				var str = '';
+				for (var key in data) {
+					str += key + '=' + data[key] + '&';
+				}
+				data = str.replace(/&$/, '');
+			}
+			//2.拼接传入的json,创建open请求，链接服务器
+			if (type == 'GET') {
+				if (data) {
+					xhr.open('GET', url + '?' + data, true);
+				} else {
+					xhr.open('GET', url + '?t=' + random, true);
+				}
+				//3.发送请求
+				xhr.send();
+			} else if (type == 'POST') {
+				xhr.open('POST', url, true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhr.send(data);
+			}
+
+			// 4.处理返回数据
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						success(xhr.responseText);
+					} else {
+						if (failed) {
+							failed(xhr.status);
+						}
+					}
+				}
+			};
+		}
+
+
+		//课程列表
+		/**
+		 * 
+		 * pag 当前页码
+		 * psi 数据个数
+		 * type 筛选类型
+		 */
+		var pageNumber = 1;
+		var psizeNumber = 20;
+		var typeNumber = 10;
+
+
+		function course() {
+			//定义请求数据data
+			var senddata = {
+				"pageNo": pageNumber,//当前页码
+				"psize": psizeNumber,//每页返回数据个数
+				"type": typeNumber//筛选类型：10产品设计，20编程语言
+			}
+
+			Ajax("get", "http://study.163.com/webDev/couresByCategory.htm", senddata,
+				function (str) {
+					var arr = JSON.parse(str);
+					var contentlist = $('courselist');
+					contentlist.innerHTML = "";
+					for (var i = 0; i < arr.list.length; i++) {
+						var coursebox = document.createElement('div');
+						coursebox.className = "course";
+
+						//创建节点img ，图片地址是小图
+						var img = document.createElement('img');
+						img.setAttribute('src', arr.list[i].middlePhotoUrl);
+						img.setAttribute('onmouseover', 'bigger()');
+						img.setAttribute('onmouseout', 'smaller()');
+
+
+						//创建节点，课程名称
+						var name = document.createElement('span')
+						name.className = "name";
+						name.innerHTML = arr.list[i].name;
+
+						//创建节点，课程作者
+						var provider = document.createElement('span')
+						provider.className = "provider";
+						provider.innerHTML = arr.list[i].provider;
+
+						//创建节点，参与人数
+						var learnerCount = document.createElement('span')
+						learnerCount.className = "learnerCount";
+						learnerCount.innerHTML =arr.list[i].learnerCount; 
+
+						//创建节点，课程价格
+						var price = document.createElement('span')
+						price.className = "price";
+						price.innerHTML = "￥" + arr.list[i].price;
+
+						var coursefa = contentlist.appendChild(coursebox);
+						coursefa.appendChild(img);
+						coursefa.appendChild(name);
+						coursefa.appendChild(provider);
+						coursefa.appendChild(learnerCount);
+						coursefa.appendChild(price);
+
+						
+						// *****创建浮动预览层*****
+						var lgCourse=document.createElement("div");
+						lgCourse.className="lgCourse";
+
+						var lgImg=document.createElement('img');
+						lgImg.setAttribute('src', arr.list[i].middlePhotoUrl);
+
+						var	lgName=document.createElement('span')
+						lgName.className = "name";
+						lgName.innerHTML = arr.list[i].name;
+
+						var	lgLearnerCount=document.createElement('span')
+						lgLearnerCount.className = "learnerCount";
+						lgLearnerCount.innerHTML =arr.list[i].learnerCount;
+
+						var	lgProvider=document.createElement('span')
+						lgProvider.className = "provider";
+						lgProvider.innerHTML = arr.list[i].provider;
+
+						var categoryName= document.createElement('span')
+						categoryName.className = "categoryName";
+						categoryName.innerHTML = arr.list[i].categoryName;
+
+						var  description= document.createElement('span')
+						description.className = "description";
+						description.innerHTML = arr.list[i].description;
+
+						var lgBox=coursefa.appendChild(lgCourse);
+						lgBox.appendChild(lgImg);
+						lgBox.appendChild(lgName);
+						lgBox.appendChild(lgLearnerCount);
+						lgBox.appendChild(lgProvider);
+						lgBox.appendChild(categoryName);
+						lgBox.appendChild(description);
+						//*****创建浮动预览层****
+
+						if (price.innerHTML == "￥0") {
+							price.innerHTML = "免费";
+						}
+
+
+					}
+				}
+			)
+		}
+		course();
+
+		// 给course添加hover事件，调出预览图  .course设置visibility：hidden；lgCourse清除隐藏的继承
+		function bigger(){
+			//mouseover事件调出预览
+		}
+
+		function smaller(){
+			//mouseout事件关闭预览
+		}
+		// 
+		// 
+
+
+		//课程切换
+		var tap = $('courseclass').getElementsByTagName('a');
+
+		// 当前卡片的颜色切换，并且请求xhr请求的参数改变
+		function coursechange() {
+			typeNumber = (typeNumber == 10) ? 20 : 10;
+			for (var i = 0; i < tap.length; i++) {
+				tap[i].className = "";
+			}
+			this.className = "active";
+			pageNumber = 1;
+			course();
+		}
+
+		// 添加点击事件，冒泡
+		tap[1].addEventListener('click', coursechange, false);
+		tap[0].addEventListener('click', coursechange, false);
+
+
+		// 右侧热门事件
+		function courselist() {
+			var hotlist = $('hotlist');
+
+			Ajax("get", "http://study.163.com/webDev/hotcouresByCategory.htm", {}, function (str) {
+				var arr = JSON.parse(str);
+				for (var i = 0; i < 10; i++) {
+					var warp = document.createElement('div');
+					warp.className = "hotlistwarp";
+
+					var img = document.createElement('img');
+					img.setAttribute('src', arr[i].smallPhotoUrl);
+
+					var title = document.createElement('span');
+					title.className = "listname";
+					title.innerHTML = arr[i].name;
+
+					var learner = document.createElement('span');
+					learner.className = "listlearner";
+					learner.innerHTML = arr[i].learnerCount;
+
+					hotlist.appendChild(warp);
+					warp.appendChild(img);
+					warp.appendChild(title);
+					warp.appendChild(learner);
+				}
+			})
+		}
+		setInterval(courselist(),5000);
+		// courselist();
+
+	</script>
+</body>
+</html>
